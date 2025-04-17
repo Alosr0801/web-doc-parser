@@ -1,0 +1,18 @@
+# Ignore files and directories that should not be included in the published extension
+node_modules
+dist
+out
+.vscode
+*.tsbuildinfo
+*.log
+*.map
+*.tgz
+*.zip
+.DS_Store
+.vscode-test
+coverage
+test-results
+*.iml
+.idea
+*.sublime-workspace
+*.sublime-project

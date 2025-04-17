@@ -1,0 +1,117 @@
+{
+  "name": "web-doc-parser",
+  "displayName": "Web文档解析器",
+  "description": "解析网页内容并提取Markdown，将其提供给AI助手",
+  "version": "0.0.1",
+  "publisher": "Alosr0801",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alosr0801/web-doc-parser.git"
+  },
+  "homepage": "https://github.com/Alosr0801/web-doc-parser/blob/main/README.md",
+  "bugs": {
+    "url": "https://github.com/Alosr0801/web-doc-parser/issues"
+  },
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.fetchWebpage",
+        "title": "解析网页内容"
+      },
+      {
+        "command": "extension.fetchMarkdown",
+        "title": "获取网页Markdown源码"
+      },
+      {
+        "command": "extension.listWebpages",
+        "title": "查看已解析的网页"
+      },
+      {
+        "command": "extension.copyWebpageContent",
+        "title": "复制网页内容到剪贴板"
+      },
+      {
+        "command": "extension.clearWebpages",
+        "title": "清除存储的网页内容"
+      },
+      {
+        "command": "extension.configureAIService",
+        "title": "配置AI助手API"
+      },
+      {
+        "command": "extension.sendToAI",
+        "title": "将内容发送到AI助手"
+      },
+      {
+        "command": "extension.fetchAndSendToAI",
+        "title": "获取网页内容并发送到AI助手"
+      },
+      {
+        "command": "extension.sendToCopilot",
+        "title": "获取网页内容并直接发送到GitHub Copilot"
+      }
+    ],
+    "configuration": {
+      "title": "Web文档解析器",
+      "properties": {
+        "webDocParser.aiProvider": {
+          "type": "string",
+          "default": "copilot",
+          "enum": ["copilot", "openai", "azure", "anthropic", "custom"],
+          "description": "AI服务提供商（默认使用GitHub Copilot，无需配置）"
+        },
+        "webDocParser.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "AI服务API密钥"
+        },
+        "webDocParser.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "API终端节点URL（对于Azure或自定义API）"
+        },
+        "webDocParser.model": {
+          "type": "string",
+          "default": "",
+          "description": "使用的AI模型名称"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "^14.x",
+    "@types/sinon": "^17.0.4",
+    "@types/vscode": "^1.60.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.27.0",
+    "glob": "^7.1.7",
+    "mocha": "^8.4.0",
+    "sinon": "^20.0.0",
+    "typescript": "^4.3.2",
+    "vscode-test": "^1.5.2"
+  },
+  "dependencies": {
+    "@types/turndown": "^5.0.5",
+    "axios": "^0.24.0",
+    "turndown": "^7.2.0"
+  }
+}
